@@ -16,8 +16,8 @@ public class Plate {
     }
 
     public boolean isValid(){
-
-        if(number.matches("^\\d{4}[A-Z]{3}$")){
+        String plate = number.replaceAll("[\\s-]+", "");
+        if(plate.matches("^\\d{4}[A-Z]{3}$")){
             return true;
         }
         else{
