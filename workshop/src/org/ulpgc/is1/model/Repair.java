@@ -59,8 +59,15 @@ public class Repair {
         if(!breakdownTypeList.contains(breakdownType)) breakdownTypeList.add(breakdownType);
     }
 
-    //TODO
-    //public String getBreakdownType() {}
+    public String getBreakdownType() {
+        if(breakdownTypeList.size() < 2){
+            return breakdownTypeList.get(0).toString();
+        }
+        else{
+            return  breakdownTypeList.get(0).toString() +" and " + breakdownTypeList.get(1).toString();
+        }
+
+    }
 
     public int getId() {
         return id;
@@ -90,6 +97,12 @@ public class Repair {
         this.effort = effort;
     }
 
-    // TODO
-    //public int price(){}
+    public int price(){
+        int amount = 0;
+        for(int i = 0; i < itemList.size(); i++){
+            amount += sparePartsList.get(i).getPrice() * itemList.get(i).getQuantity();
+        }
+        this.payment = new Payment(date, amount);
+        return amount;
+    }
 }
